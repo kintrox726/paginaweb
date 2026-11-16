@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TecnoWorld | Mundo Tecnológico</title>
+    <title>NovaTech | El mundo de la tecnología</title>
 
     <style>
-        /* ESTILOS GENERALES */
+        /* CONFIGURACIÓN GENERAL */
         * {
             margin: 0;
             padding: 0;
@@ -16,286 +16,564 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7fb;
-            color: #263445;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080b12;
+            color: #ffffff;
             line-height: 1.6;
         }
 
-        /* MENU DE NAVEGACION */
+        :root {
+            --azul: #168cff;
+            --celeste: #00d9ff;
+            --fondo: #080b12;
+            --tarjeta: #111925;
+            --texto: #aebdce;
+        }
+
+        /* MENÚ DE NAVEGACIÓN */
         header {
-            background-color: #101d35;
-            padding: 18px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            width: 100%;
+            background: rgba(8, 11, 18, 0.94);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.15);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            backdrop-filter: blur(12px);
+        }
+
+        nav {
+            max-width: 1200px;
+            min-height: 75px;
+            margin: auto;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
         }
 
         .logo {
-            color: #38bdf8;
             font-size: 25px;
             font-weight: bold;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        nav a {
             color: white;
             text-decoration: none;
-            font-size: 15px;
+        }
+
+        .logo span {
+            color: var(--celeste);
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .menu a {
+            color: #c7d2df;
+            text-decoration: none;
+            font-size: 14px;
             transition: 0.3s;
         }
 
-        nav a:hover {
-            color: #38bdf8;
+        .menu a:hover {
+            color: var(--celeste);
         }
 
         /* PORTADA */
         .inicio {
-            min-height: 480px;
-            background: linear-gradient(120deg, #101d35, #075985);
+            min-height: 620px;
+            padding: 80px 25px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 60px 20px;
-            color: white;
+            background:
+                radial-gradient(circle at 75% 50%, #102747 0%, transparent 35%),
+                linear-gradient(120deg, #080b12, #0b1422);
+            overflow: hidden;
         }
 
-        .inicio h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
+        .hero-contenido {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            align-items: center;
+            gap: 40px;
         }
 
-        .inicio h1 span {
-            color: #38bdf8;
+        .etiqueta {
+            display: inline-block;
+            color: var(--celeste);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            background: rgba(0, 217, 255, 0.06);
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
         }
 
-        .inicio p {
-            max-width: 750px;
-            font-size: 18px;
-            color: #dbeafe;
+        .hero-texto h1 {
+            font-size: clamp(38px, 5vw, 65px);
+            line-height: 1.12;
+            margin-bottom: 25px;
+        }
+
+        .hero-texto h1 span {
+            color: var(--celeste);
+            text-shadow: 0 0 25px rgba(0, 217, 255, 0.3);
+        }
+
+        .hero-texto p {
+            color: var(--texto);
+            max-width: 560px;
+            font-size: 17px;
+            margin-bottom: 32px;
         }
 
         .boton {
             display: inline-block;
-            margin-top: 25px;
-            padding: 13px 28px;
-            background-color: #0ea5e9;
+            padding: 13px 27px;
+            border-radius: 7px;
+            background: linear-gradient(90deg, #087cff, #00c9e8);
             color: white;
+            font-weight: bold;
             text-decoration: none;
-            border-radius: 6px;
             transition: 0.3s;
         }
 
         .boton:hover {
-            background-color: #0284c7;
-            transform: translateY(-3px);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 180, 255, 0.3);
         }
 
-        /* SECCIONES */
-        section {
-            padding: 70px 8%;
-            scroll-margin-top: 75px;
+        /* PLANETA ANIMADO */
+        .planeta-escena {
+            width: 360px;
+            height: 360px;
+            position: relative;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .titulo {
-            text-align: center;
-            color: #075985;
-            font-size: 32px;
-            margin-bottom: 15px;
+        .planeta {
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 30% 25%, #9eeeff 0%, #168cff 22%, #06418b 55%, #020817 100%);
+            box-shadow:
+                inset -25px -15px 45px #020817,
+                inset 10px 5px 25px rgba(255,255,255,0.35),
+                0 0 35px rgba(0, 180, 255, 0.55),
+                0 0 90px rgba(0, 130, 255, 0.25);
+            z-index: 2;
+            animation: flotar 5s ease-in-out infinite;
         }
 
-        .descripcion {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            color: #64748b;
+        .planeta-superficie {
+            position: absolute;
+            inset: -10%;
+            border-radius: 50%;
+            background:
+                radial-gradient(ellipse at 25% 30%, #56b8a1 0 9%, transparent 10%),
+                radial-gradient(ellipse at 60% 25%, #42a98e 0 13%, transparent 14%),
+                radial-gradient(ellipse at 48% 65%, #2e8c7e 0 17%, transparent 18%),
+                radial-gradient(ellipse at 80% 70%, #3bb6a0 0 10%, transparent 11%);
+            opacity: 0.8;
+            animation: girar-planeta 18s linear infinite;
         }
 
-        /* TARJETAS */
+        .brillo-planeta {
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 217, 255, 0.4);
+            box-shadow: 0 0 25px rgba(0, 217, 255, 0.25);
+            z-index: 1;
+        }
+
+        .orbita {
+            position: absolute;
+            width: 350px;
+            height: 125px;
+            border: 2px solid rgba(0, 217, 255, 0.65);
+            border-radius: 50%;
+            z-index: 3;
+            box-shadow: 0 0 12px rgba(0, 217, 255, 0.25);
+        }
+
+        .orbita-1 {
+            transform: rotate(-25deg);
+            animation: orbitar 12s linear infinite;
+        }
+
+        .orbita-2 {
+            width: 310px;
+            height: 110px;
+            border-color: rgba(22, 140, 255, 0.6);
+            transform: rotate(45deg);
+            animation: orbitar-inversa 16s linear infinite;
+        }
+
+        @keyframes girar-planeta {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes orbitar {
+            from {
+                transform: rotate(-25deg);
+            }
+            to {
+                transform: rotate(335deg);
+            }
+        }
+
+        @keyframes orbitar-inversa {
+            from {
+                transform: rotate(45deg);
+            }
+            to {
+                transform: rotate(-315deg);
+            }
+        }
+
+        @keyframes flotar {
+            0%, 100% {
+                translate: 0 0;
+            }
+            50% {
+                translate: 0 -12px;
+            }
+        }
+
+        /* SECCIONES GENERALES */
+        section:not(.inicio) {
+            padding: 90px 25px;
+        }
+
         .contenedor {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .titulo-seccion span {
+            color: var(--celeste);
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .titulo-seccion h2 {
+            font-size: 36px;
+            margin-top: 10px;
+        }
+
+        .titulo-seccion p {
+            color: var(--texto);
+            margin-top: 12px;
+        }
+
+        /* INFORMACIÓN */
+        #informacion {
+            background: #0b111c;
+        }
+
+        .informacion-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 25px;
         }
 
         .tarjeta {
-            background-color: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            background: var(--tarjeta);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 13px;
+            padding: 30px;
             transition: 0.3s;
-            border-bottom: 3px solid transparent;
         }
 
         .tarjeta:hover {
-            transform: translateY(-8px);
-            border-bottom: 3px solid #0ea5e9;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            transform: translateY(-6px);
+            border-color: var(--celeste);
+            box-shadow: 0 12px 30px rgba(0, 150, 255, 0.1);
         }
 
         .icono {
-            font-size: 38px;
-            margin-bottom: 15px;
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            background: rgba(0, 217, 255, 0.1);
+            border-radius: 10px;
+            font-size: 24px;
+            margin-bottom: 18px;
         }
 
         .tarjeta h3 {
-            color: #075985;
+            font-size: 20px;
             margin-bottom: 12px;
         }
 
         .tarjeta p {
-            color: #64748b;
+            color: var(--texto);
             font-size: 15px;
         }
 
-        /* SECCION DE AVANCES */
+        /* AVANCES */
         #avances {
-            background-color: #e8f4fc;
+            background: var(--fondo);
         }
 
-        /* SECCION DE PROBLEMAS */
-        #problemas {
-            background-color: #ffffff;
+        .avances-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
 
-        .problema h3 {
-            color: #dc5555;
-        }
-
-        /* SECCION DE SOLUCIONES */
-        #soluciones {
-            background-color: #e8f4fc;
-        }
-
-        .solucion {
-            border-left: 4px solid #16a34a;
-        }
-
-        .solucion h3 {
-            color: #15803d;
-        }
-
-        /* SECCION DE IMPORTANCIA */
-        .importancia {
-            background: linear-gradient(120deg, #101d35, #075985);
-            color: white;
-            text-align: center;
-        }
-
-        .importancia h2 {
-            color: #38bdf8;
-        }
-
-        .importancia p {
-            max-width: 800px;
-            margin: auto;
-            color: #dbeafe;
-        }
-
-        /* FOOTER */
-        footer {
-            background-color: #101d35;
-            padding: 45px 8%;
-            text-align: center;
-            color: white;
-        }
-
-        footer h2 {
-            color: #38bdf8;
-            margin-bottom: 15px;
-        }
-
-        footer p {
-            color: #cbd5e1;
-            margin: 8px 0;
-        }
-
-        .redes {
-            margin-top: 18px;
-        }
-
-        .redes a {
-            display: inline-block;
-            color: #38bdf8;
-            text-decoration: none;
-            margin: 5px 12px;
+        .avance {
+            background: linear-gradient(145deg, #121e30, #0d1420);
+            border: 1px solid rgba(0, 217, 255, 0.13);
+            border-radius: 12px;
+            padding: 25px;
             transition: 0.3s;
         }
 
-        .redes a:hover {
-            color: white;
+        .avance:hover {
+            transform: translateY(-7px);
+            border-color: var(--azul);
+        }
+
+        .avance .numero {
+            color: var(--celeste);
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .avance h3 {
+            margin-bottom: 10px;
+        }
+
+        .avance p {
+            color: var(--texto);
+            font-size: 14px;
+        }
+
+        /* PROBLEMAS */
+        #problemas {
+            background: #0b111c;
+        }
+
+        .problemas-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .problema {
+            padding: 25px;
+            border-radius: 12px;
+            background: #141b27;
+            border-left: 3px solid #ff526d;
+        }
+
+        .problema h3 {
+            margin-bottom: 12px;
+            color: #ff8294;
+        }
+
+        .problema p {
+            color: var(--texto);
+            font-size: 14px;
+        }
+
+        /* SOLUCIONES */
+        #soluciones {
+            background: var(--fondo);
+        }
+
+        .soluciones-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .solucion {
+            background: var(--tarjeta);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 217, 255, 0.12);
+        }
+
+        .solucion h3 {
+            color: var(--celeste);
+            margin-bottom: 12px;
+        }
+
+        .solucion p {
+            color: var(--texto);
+            font-size: 14px;
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            background: #05080e;
+            border-top: 1px solid rgba(0, 217, 255, 0.15);
+            padding: 45px 25px 20px;
+        }
+
+        .footer-contenido {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer p,
+        footer a {
+            color: var(--texto);
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--celeste);
+        }
+
+        .footer-enlaces {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .copyright {
-            border-top: 1px solid #334155;
-            margin-top: 25px;
+            max-width: 1200px;
+            margin: 35px auto 0;
             padding-top: 20px;
+            border-top: 1px solid #202b3a;
+            text-align: center;
+            color: #758397;
             font-size: 13px;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            header {
+        /* DISEÑO RESPONSIVO */
+        @media (max-width: 900px) {
+            .avances-grid,
+            .problemas-grid,
+            .soluciones-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-contenido {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .planeta-escena {
+                transform: scale(0.85);
+            }
+        }
+
+        @media (max-width: 700px) {
+            nav {
                 flex-direction: column;
-                gap: 15px;
+                padding: 18px;
             }
 
-            nav ul {
-                flex-wrap: wrap;
+            .menu {
                 justify-content: center;
-                gap: 15px;
+                flex-wrap: wrap;
+                gap: 12px 20px;
             }
 
-            .inicio h1 {
-                font-size: 34px;
+            .hero-contenido {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
 
-            .inicio p {
-                font-size: 16px;
+            .hero-texto p {
+                margin-left: auto;
+                margin-right: auto;
             }
 
-            section {
-                padding: 50px 6%;
-            }
-        }
-
-        @media (max-width: 400px) {
-            nav ul {
-                gap: 10px;
+            .planeta-escena {
+                margin-top: 30px;
             }
 
-            nav a {
-                font-size: 13px;
+            .informacion-grid {
+                grid-template-columns: 1fr;
             }
 
-            .titulo {
-                font-size: 27px;
+            .footer-contenido {
+                grid-template-columns: 1fr;
             }
         }
 
+        @media (max-width: 450px) {
+            .avances-grid,
+            .problemas-grid,
+            .soluciones-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .planeta-escena {
+                transform: scale(0.75);
+                margin: -10px auto;
+            }
+
+            .titulo-seccion h2 {
+                font-size: 29px;
+            }
+
+            .hero-texto h1 {
+                font-size: 40px;
+            }
+        }
+
+        /* RESPETAR PREFERENCIA DE MENOS MOVIMIENTO */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- MENU PRINCIPAL -->
+    <!-- MENÚ DE NAVEGACIÓN -->
     <header>
-
-        <div class="logo">TecnoWorld.</div>
-
         <nav>
-            <ul>
+            <a href="#inicio" class="logo">Nova<span>Tech.</span></a>
+
+            <ul class="menu">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#informacion">Información</a></li>
                 <li><a href="#avances">Avances</a></li>
@@ -304,296 +582,331 @@
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
-
     </header>
 
-    <main>
+    <!-- PORTADA PRINCIPAL -->
+    <section class="inicio" id="inicio">
 
-        <!-- PORTADA -->
-        <section class="inicio" id="inicio">
+        <div class="hero-contenido">
 
-            <h1>Explora el mundo de la <span>Tecnología</span></h1>
+            <div class="hero-texto">
 
-            <p>
-                Descubre cómo la tecnología transforma nuestra vida,
-                facilita las actividades diarias y abre nuevas
-                oportunidades para el futuro.
-            </p>
+                <span class="etiqueta">
+                    INNOVACIÓN · TECNOLOGÍA · FUTURO
+                </span>
 
-            <a href="#informacion" class="boton">
-                Descubrir más
-            </a>
+                <h1>
+                    Explora el mundo de la
+                    <span>Tecnología</span>
+                </h1>
 
-        </section>
+                <p>
+                    Descubre cómo la tecnología transforma nuestra vida,
+                    impulsa la innovación y abre nuevas oportunidades
+                    para construir el futuro.
+                </p>
 
-        <!-- INFORMACION BASICA -->
-        <section id="informacion">
+                <a href="#informacion" class="boton">
+                    Explorar más →
+                </a>
 
-            <h2 class="titulo">¿Qué es la tecnología?</h2>
+            </div>
 
-            <p class="descripcion">
-                La tecnología es el conjunto de conocimientos,
-                herramientas, técnicas y procesos utilizados
-                para crear soluciones que permiten satisfacer
-                necesidades humanas y mejorar nuestra calidad de vida.
-            </p>
+            <!-- PLANETA ANIMADO -->
+            <div class="planeta-escena">
 
-            <div class="contenedor">
+                <div class="orbita orbita-1"></div>
+                <div class="orbita orbita-2"></div>
+
+                <div class="brillo-planeta"></div>
+
+                <div class="planeta">
+                    <div class="planeta-superficie"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- INFORMACIÓN -->
+    <section id="informacion">
+
+        <div class="contenedor">
+
+            <div class="titulo-seccion">
+                <span>CONOCE MÁS</span>
+                <h2>¿Qué es la tecnología?</h2>
+                <p>
+                    Una herramienta fundamental para el desarrollo
+                    de la sociedad moderna.
+                </p>
+            </div>
+
+            <div class="informacion-grid">
 
                 <article class="tarjeta">
-                    <div class="icono">💻</div>
-                    <h3>Informática</h3>
+                    <div class="icono">💡</div>
+                    <h3>Definición</h3>
                     <p>
-                        Estudia el procesamiento automático de
-                        información mediante computadoras y sistemas
-                        digitales.
+                        La tecnología es el conjunto de conocimientos,
+                        herramientas y técnicas que permiten crear
+                        soluciones para satisfacer necesidades y
+                        resolver problemas de la vida cotidiana.
                     </p>
                 </article>
 
                 <article class="tarjeta">
                     <div class="icono">🌐</div>
-                    <h3>Internet</h3>
+                    <h3>Importancia</h3>
                     <p>
-                        Es una red mundial que permite conectar
-                        dispositivos, compartir información y
-                        comunicarnos desde diferentes lugares.
+                        Facilita la comunicación, mejora los procesos
+                        de trabajo, permite acceder a información y
+                        contribuye al desarrollo de diferentes áreas
+                        de la sociedad.
                     </p>
                 </article>
 
                 <article class="tarjeta">
                     <div class="icono">📱</div>
-                    <h3>Dispositivos móviles</h3>
+                    <h3>Uso cotidiano</h3>
                     <p>
-                        Los teléfonos inteligentes y tabletas
-                        permiten acceder a información, aplicaciones
-                        y servicios digitales.
+                        Está presente en los teléfonos inteligentes,
+                        computadoras, electrodomésticos, medios de
+                        transporte y plataformas digitales que
+                        utilizamos diariamente.
                     </p>
                 </article>
 
                 <article class="tarjeta">
-                    <div class="icono">🤖</div>
-                    <h3>Inteligencia artificial</h3>
+                    <div class="icono">🚀</div>
+                    <h3>Desarrollo</h3>
                     <p>
-                        Es una tecnología que permite a los sistemas
-                        realizar tareas como analizar información,
-                        reconocer patrones y generar contenido.
+                        La evolución tecnológica permite crear nuevas
+                        herramientas, mejorar los servicios y encontrar
+                        formas más eficientes de realizar diferentes
+                        actividades.
                     </p>
                 </article>
 
             </div>
 
-        </section>
-
-        <!-- AVANCES TECNOLOGICOS -->
-        <section id="avances">
-
-            <h2 class="titulo">Avances tecnológicos</h2>
-
-            <p class="descripcion">
-                Los avances tecnológicos han permitido desarrollar
-                nuevas herramientas que están cambiando diferentes
-                sectores de la sociedad.
-            </p>
-
-            <div class="contenedor">
-
-                <article class="tarjeta">
-                    <div class="icono">🧠</div>
-                    <h3>Inteligencia artificial</h3>
-                    <p>
-                        Facilita el análisis de datos, la automatización
-                        de tareas y el desarrollo de asistentes virtuales.
-                    </p>
-                </article>
-
-                <article class="tarjeta">
-                    <div class="icono">☁️</div>
-                    <h3>Computación en la nube</h3>
-                    <p>
-                        Permite almacenar archivos y utilizar servicios
-                        informáticos a través de Internet.
-                    </p>
-                </article>
-
-                <article class="tarjeta">
-                    <div class="icono">🦾</div>
-                    <h3>Robótica</h3>
-                    <p>
-                        Desarrolla máquinas capaces de realizar
-                        actividades que ayudan en la industria,
-                        medicina y otros campos.
-                    </p>
-                </article>
-
-                <article class="tarjeta">
-                    <div class="icono">📡</div>
-                    <h3>Conectividad 5G</h3>
-                    <p>
-                        Ofrece conexiones móviles de alta velocidad
-                        y facilita la comunicación entre dispositivos.
-                    </p>
-                </article>
-
-            </div>
-
-        </section>
-
-        <!-- PROBLEMAS -->
-        <section id="problemas">
-
-            <h2 class="titulo">Problemas tecnológicos</h2>
-
-            <p class="descripcion">
-                Aunque la tecnología ofrece muchos beneficios,
-                también presenta desafíos que pueden afectar
-                a las personas y a la sociedad.
-            </p>
-
-            <div class="contenedor">
-
-                <article class="tarjeta problema">
-                    <div class="icono">🔓</div>
-                    <h3>Falta de privacidad</h3>
-                    <p>
-                        El uso inadecuado de plataformas digitales
-                        puede provocar la exposición de información
-                        personal.
-                    </p>
-                </article>
-
-                <article class="tarjeta problema">
-                    <div class="icono">🦠</div>
-                    <h3>Virus informáticos</h3>
-                    <p>
-                        Los programas maliciosos pueden dañar
-                        dispositivos, alterar archivos o comprometer
-                        información.
-                    </p>
-                </article>
-
-                <article class="tarjeta problema">
-                    <div class="icono">📵</div>
-                    <h3>Dependencia tecnológica</h3>
-                    <p>
-                        El uso excesivo de dispositivos puede
-                        afectar la organización del tiempo y
-                        las actividades cotidianas.
-                    </p>
-                </article>
-
-                <article class="tarjeta problema">
-                    <div class="icono">♻️</div>
-                    <h3>Residuos electrónicos</h3>
-                    <p>
-                        Los dispositivos desechados incorrectamente
-                        pueden generar contaminación ambiental.
-                    </p>
-                </article>
-
-            </div>
-
-        </section>
-
-        <!-- SOLUCIONES -->
-        <section id="soluciones">
-
-            <h2 class="titulo">Soluciones tecnológicas</h2>
-
-            <p class="descripcion">
-                Existen diferentes medidas y buenas prácticas
-                que permiten aprovechar la tecnología de manera
-                responsable y segura.
-            </p>
-
-            <div class="contenedor">
-
-                <article class="tarjeta solucion">
-                    <div class="icono">🔐</div>
-                    <h3>Proteger la información</h3>
-                    <p>
-                        Utilizar contraseñas seguras, activar
-                        la verificación en dos pasos y evitar
-                        compartir información sensible.
-                    </p>
-                </article>
-
-                <article class="tarjeta solucion">
-                    <div class="icono">🛡️</div>
-                    <h3>Seguridad informática</h3>
-                    <p>
-                        Instalar herramientas de protección,
-                        actualizar los sistemas y evitar
-                        descargar archivos sospechosos.
-                    </p>
-                </article>
-
-                <article class="tarjeta solucion">
-                    <div class="icono">⏰</div>
-                    <h3>Uso responsable</h3>
-                    <p>
-                        Establecer horarios para utilizar
-                        dispositivos y mantener un equilibrio
-                        entre las actividades digitales y físicas.
-                    </p>
-                </article>
-
-                <article class="tarjeta solucion">
-                    <div class="icono">🌱</div>
-                    <h3>Reciclaje electrónico</h3>
-                    <p>
-                        Llevar los dispositivos que ya no utilizamos
-                        a centros de reciclaje especializados para
-                        reducir el impacto ambiental.
-                    </p>
-                </article>
-
-            </div>
-
-        </section>
-
-        <!-- IMPORTANCIA -->
-        <section class="importancia">
-
-            <h2 class="titulo">La tecnología y el futuro</h2>
-
-            <p>
-                La tecnología continuará evolucionando y transformando
-                nuestra forma de aprender, trabajar y comunicarnos.
-                Por eso, es importante adquirir conocimientos
-                tecnológicos y utilizarlos de manera responsable
-                para construir un futuro con mayores oportunidades.
-            </p>
-
-            <a href="#contacto" class="boton">
-                Contáctanos
-            </a>
-
-        </section>
-
-    </main>
-
-    <!-- PIE DE PAGINA -->
-    <footer id="contacto">
-
-        <h2>TecnoWorld.</h2>
-
-        <p>Conoce, aprende y descubre el mundo tecnológico.</p>
-
-        <p><strong>Desarrollado por:</strong> Carlos emmanuel perez rojas</p>
-
-        <p><strong>Correo:</strong>Carlorojas55421@gmail.com</p>
-
-        <p><strong>Teléfono:</strong> +503 0000-0000</p>
-
-        <div class="redes">
-            <a href="https://www.facebook.com/">Facebook</a>
-            <a href="https://www.instagram.com/">Instagram</a>
-            <a href="https://www.linkedin.com/">LinkedIn</a>
         </div>
 
-        <p class="copyright">
-            © 2026 TecnoWorld. Todos los derechos reservados.
-        </p>
+    </section>
+
+    <!-- AVANCES TECNOLÓGICOS -->
+    <section id="avances">
+
+        <div class="contenedor">
+
+            <div class="titulo-seccion">
+                <span>INNOVACIÓN</span>
+                <h2>Avances tecnológicos</h2>
+                <p>
+                    Algunas de las tecnologías que están transformando
+                    nuestro mundo.
+                </p>
+            </div>
+
+            <div class="avances-grid">
+
+                <article class="avance">
+                    <div class="numero">01</div>
+                    <h3>Inteligencia artificial</h3>
+                    <p>
+                        Permite que los sistemas informáticos realicen
+                        tareas como analizar información, reconocer
+                        patrones y generar contenido.
+                    </p>
+                </article>
+
+                <article class="avance">
+                    <div class="numero">02</div>
+                    <h3>Robótica</h3>
+                    <p>
+                        Facilita la automatización de actividades
+                        mediante máquinas capaces de realizar
+                        diferentes tareas.
+                    </p>
+                </article>
+
+                <article class="avance">
+                    <div class="numero">03</div>
+                    <h3>Computación en la nube</h3>
+                    <p>
+                        Permite almacenar información y utilizar
+                        servicios digitales a través de internet.
+                    </p>
+                </article>
+
+                <article class="avance">
+                    <div class="numero">04</div>
+                    <h3>Realidad virtual</h3>
+                    <p>
+                        Crea entornos digitales interactivos que
+                        permiten experimentar espacios simulados.
+                    </p>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PROBLEMAS TECNOLÓGICOS -->
+    <section id="problemas">
+
+        <div class="contenedor">
+
+            <div class="titulo-seccion">
+                <span>DESAFÍOS ACTUALES</span>
+                <h2>Problemas de la tecnología</h2>
+                <p>
+                    A pesar de sus beneficios, también existen
+                    desafíos que debemos considerar.
+                </p>
+            </div>
+
+            <div class="problemas-grid">
+
+                <article class="problema">
+                    <h3>Dependencia digital</h3>
+                    <p>
+                        El uso excesivo de dispositivos puede afectar
+                        la organización del tiempo y las actividades
+                        personales.
+                    </p>
+                </article>
+
+                <article class="problema">
+                    <h3>Ciberseguridad</h3>
+                    <p>
+                        Los usuarios pueden estar expuestos al robo
+                        de información, fraudes y ataques informáticos.
+                    </p>
+                </article>
+
+                <article class="problema">
+                    <h3>Brecha digital</h3>
+                    <p>
+                        No todas las personas tienen las mismas
+                        oportunidades de acceder a internet y a
+                        dispositivos tecnológicos.
+                    </p>
+                </article>
+
+                <article class="problema">
+                    <h3>Contaminación electrónica</h3>
+                    <p>
+                        Los dispositivos desechados pueden generar
+                        residuos que afectan al medio ambiente.
+                    </p>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SOLUCIONES -->
+    <section id="soluciones">
+
+        <div class="contenedor">
+
+            <div class="titulo-seccion">
+                <span>UN FUTURO MEJOR</span>
+                <h2>Posibles soluciones</h2>
+                <p>
+                    Acciones que permiten aprovechar la tecnología
+                    de una manera responsable.
+                </p>
+            </div>
+
+            <div class="soluciones-grid">
+
+                <article class="solucion">
+                    <h3>Uso responsable</h3>
+                    <p>
+                        Establecer límites de tiempo y mantener un
+                        equilibrio entre las actividades digitales
+                        y personales.
+                    </p>
+                </article>
+
+                <article class="solucion">
+                    <h3>Seguridad digital</h3>
+                    <p>
+                        Utilizar contraseñas seguras, evitar enlaces
+                        sospechosos y proteger la información personal.
+                    </p>
+                </article>
+
+                <article class="solucion">
+                    <h3>Acceso educativo</h3>
+                    <p>
+                        Promover la educación tecnológica y facilitar
+                        el acceso a herramientas digitales.
+                    </p>
+                </article>
+
+                <article class="solucion">
+                    <h3>Reciclaje electrónico</h3>
+                    <p>
+                        Reutilizar dispositivos y depositar los residuos
+                        electrónicos en lugares adecuados.
+                    </p>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer id="contacto">
+
+        <div class="footer-contenido">
+
+            <div>
+                <h3 class="logo">Nova<span>Tech.</span></h3>
+                <p>
+                    Explorando la innovación, el conocimiento
+                    y las posibilidades que ofrece la tecnología
+                    para construir un futuro mejor.
+                </p>
+            </div>
+
+            <div>
+                <h3>Navegación</h3>
+
+                <div class="footer-enlaces">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#informacion">Información</a>
+                    <a href="#avances">Avances</a>
+                    <a href="#problemas">Problemas</a>
+                    <a href="#soluciones">Soluciones</a>
+                </div>
+            </div>
+
+            <div>
+                <h3>Contacto</h3>
+                <div class="footer-enlaces">
+                    <p>Correo: contacto@novatech.com</p>
+                    <p>Proyecto educativo</p>
+                    <p>El Salvador</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 NovaTech. Todos los derechos reservados.
+        </div>
 
     </footer>
 
