@@ -1,0 +1,601 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecnoWorld | Mundo Tecnológico</title>
+
+    <style>
+        /* ESTILOS GENERALES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fb;
+            color: #263445;
+            line-height: 1.6;
+        }
+
+        /* MENU DE NAVEGACION */
+        header {
+            background-color: #101d35;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            color: #38bdf8;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* PORTADA */
+        .inicio {
+            min-height: 480px;
+            background: linear-gradient(120deg, #101d35, #075985);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        .inicio h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .inicio h1 span {
+            color: #38bdf8;
+        }
+
+        .inicio p {
+            max-width: 750px;
+            font-size: 18px;
+            color: #dbeafe;
+        }
+
+        .boton {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 13px 28px;
+            background-color: #0ea5e9;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            background-color: #0284c7;
+            transform: translateY(-3px);
+        }
+
+        /* SECCIONES */
+        section {
+            padding: 70px 8%;
+            scroll-margin-top: 75px;
+        }
+
+        .titulo {
+            text-align: center;
+            color: #075985;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .descripcion {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #64748b;
+        }
+
+        /* TARJETAS */
+        .contenedor {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .tarjeta {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-8px);
+            border-bottom: 3px solid #0ea5e9;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .icono {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .tarjeta h3 {
+            color: #075985;
+            margin-bottom: 12px;
+        }
+
+        .tarjeta p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        /* SECCION DE AVANCES */
+        #avances {
+            background-color: #e8f4fc;
+        }
+
+        /* SECCION DE PROBLEMAS */
+        #problemas {
+            background-color: #ffffff;
+        }
+
+        .problema h3 {
+            color: #dc5555;
+        }
+
+        /* SECCION DE SOLUCIONES */
+        #soluciones {
+            background-color: #e8f4fc;
+        }
+
+        .solucion {
+            border-left: 4px solid #16a34a;
+        }
+
+        .solucion h3 {
+            color: #15803d;
+        }
+
+        /* SECCION DE IMPORTANCIA */
+        .importancia {
+            background: linear-gradient(120deg, #101d35, #075985);
+            color: white;
+            text-align: center;
+        }
+
+        .importancia h2 {
+            color: #38bdf8;
+        }
+
+        .importancia p {
+            max-width: 800px;
+            margin: auto;
+            color: #dbeafe;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #101d35;
+            padding: 45px 8%;
+            text-align: center;
+            color: white;
+        }
+
+        footer h2 {
+            color: #38bdf8;
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #cbd5e1;
+            margin: 8px 0;
+        }
+
+        .redes {
+            margin-top: 18px;
+        }
+
+        .redes a {
+            display: inline-block;
+            color: #38bdf8;
+            text-decoration: none;
+            margin: 5px 12px;
+            transition: 0.3s;
+        }
+
+        .redes a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid #334155;
+            margin-top: 25px;
+            padding-top: 20px;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .inicio h1 {
+                font-size: 34px;
+            }
+
+            .inicio p {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 50px 6%;
+            }
+        }
+
+        @media (max-width: 400px) {
+            nav ul {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .titulo {
+                font-size: 27px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU PRINCIPAL -->
+    <header>
+
+        <div class="logo">TecnoWorld.</div>
+
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#informacion">Información</a></li>
+                <li><a href="#avances">Avances</a></li>
+                <li><a href="#problemas">Problemas</a></li>
+                <li><a href="#soluciones">Soluciones</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <!-- PORTADA -->
+        <section class="inicio" id="inicio">
+
+            <h1>Explora el mundo de la <span>Tecnología</span></h1>
+
+            <p>
+                Descubre cómo la tecnología transforma nuestra vida,
+                facilita las actividades diarias y abre nuevas
+                oportunidades para el futuro.
+            </p>
+
+            <a href="#informacion" class="boton">
+                Descubrir más
+            </a>
+
+        </section>
+
+        <!-- INFORMACION BASICA -->
+        <section id="informacion">
+
+            <h2 class="titulo">¿Qué es la tecnología?</h2>
+
+            <p class="descripcion">
+                La tecnología es el conjunto de conocimientos,
+                herramientas, técnicas y procesos utilizados
+                para crear soluciones que permiten satisfacer
+                necesidades humanas y mejorar nuestra calidad de vida.
+            </p>
+
+            <div class="contenedor">
+
+                <article class="tarjeta">
+                    <div class="icono">💻</div>
+                    <h3>Informática</h3>
+                    <p>
+                        Estudia el procesamiento automático de
+                        información mediante computadoras y sistemas
+                        digitales.
+                    </p>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="icono">🌐</div>
+                    <h3>Internet</h3>
+                    <p>
+                        Es una red mundial que permite conectar
+                        dispositivos, compartir información y
+                        comunicarnos desde diferentes lugares.
+                    </p>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="icono">📱</div>
+                    <h3>Dispositivos móviles</h3>
+                    <p>
+                        Los teléfonos inteligentes y tabletas
+                        permiten acceder a información, aplicaciones
+                        y servicios digitales.
+                    </p>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="icono">🤖</div>
+                    <h3>Inteligencia artificial</h3>
+                    <p>
+                        Es una tecnología que permite a los sistemas
+                        realizar tareas como analizar información,
+                        reconocer patrones y generar contenido.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- AVANCES TECNOLOGICOS -->
+        <section id="avances">
+
+            <h2 class="titulo">Avances tecnológicos</h2>
+
+            <p class="descripcion">
+                Los avances tecnológicos han permitido desarrollar
+                nuevas herramientas que están cambiando diferentes
+                sectores de la sociedad.
+            </p>
+
+            <div class="contenedor">
+
+                <article class="tarjeta">
+                    <div class="icono">🧠</div>
+                    <h3>Inteligencia artificial</h3>
+                    <p>
+                        Facilita el análisis de datos, la automatización
+                        de tareas y el desarrollo de asistentes virtuales.
+                    </p>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="icono">☁️</div>
+                    <h3>Computación en la nube</h3>
+                    <p>
+                        Permite almacenar archivos y utilizar servicios
+                        informáticos a través de Internet.
+                    </p>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="icono">🦾</div>
+                    <h3>Robótica</h3>
+                    <p>
+                        Desarrolla máquinas capaces de realizar
+                        actividades que ayudan en la industria,
+                        medicina y otros campos.
+                    </p>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="icono">📡</div>
+                    <h3>Conectividad 5G</h3>
+                    <p>
+                        Ofrece conexiones móviles de alta velocidad
+                        y facilita la comunicación entre dispositivos.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- PROBLEMAS -->
+        <section id="problemas">
+
+            <h2 class="titulo">Problemas tecnológicos</h2>
+
+            <p class="descripcion">
+                Aunque la tecnología ofrece muchos beneficios,
+                también presenta desafíos que pueden afectar
+                a las personas y a la sociedad.
+            </p>
+
+            <div class="contenedor">
+
+                <article class="tarjeta problema">
+                    <div class="icono">🔓</div>
+                    <h3>Falta de privacidad</h3>
+                    <p>
+                        El uso inadecuado de plataformas digitales
+                        puede provocar la exposición de información
+                        personal.
+                    </p>
+                </article>
+
+                <article class="tarjeta problema">
+                    <div class="icono">🦠</div>
+                    <h3>Virus informáticos</h3>
+                    <p>
+                        Los programas maliciosos pueden dañar
+                        dispositivos, alterar archivos o comprometer
+                        información.
+                    </p>
+                </article>
+
+                <article class="tarjeta problema">
+                    <div class="icono">📵</div>
+                    <h3>Dependencia tecnológica</h3>
+                    <p>
+                        El uso excesivo de dispositivos puede
+                        afectar la organización del tiempo y
+                        las actividades cotidianas.
+                    </p>
+                </article>
+
+                <article class="tarjeta problema">
+                    <div class="icono">♻️</div>
+                    <h3>Residuos electrónicos</h3>
+                    <p>
+                        Los dispositivos desechados incorrectamente
+                        pueden generar contaminación ambiental.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- SOLUCIONES -->
+        <section id="soluciones">
+
+            <h2 class="titulo">Soluciones tecnológicas</h2>
+
+            <p class="descripcion">
+                Existen diferentes medidas y buenas prácticas
+                que permiten aprovechar la tecnología de manera
+                responsable y segura.
+            </p>
+
+            <div class="contenedor">
+
+                <article class="tarjeta solucion">
+                    <div class="icono">🔐</div>
+                    <h3>Proteger la información</h3>
+                    <p>
+                        Utilizar contraseñas seguras, activar
+                        la verificación en dos pasos y evitar
+                        compartir información sensible.
+                    </p>
+                </article>
+
+                <article class="tarjeta solucion">
+                    <div class="icono">🛡️</div>
+                    <h3>Seguridad informática</h3>
+                    <p>
+                        Instalar herramientas de protección,
+                        actualizar los sistemas y evitar
+                        descargar archivos sospechosos.
+                    </p>
+                </article>
+
+                <article class="tarjeta solucion">
+                    <div class="icono">⏰</div>
+                    <h3>Uso responsable</h3>
+                    <p>
+                        Establecer horarios para utilizar
+                        dispositivos y mantener un equilibrio
+                        entre las actividades digitales y físicas.
+                    </p>
+                </article>
+
+                <article class="tarjeta solucion">
+                    <div class="icono">🌱</div>
+                    <h3>Reciclaje electrónico</h3>
+                    <p>
+                        Llevar los dispositivos que ya no utilizamos
+                        a centros de reciclaje especializados para
+                        reducir el impacto ambiental.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- IMPORTANCIA -->
+        <section class="importancia">
+
+            <h2 class="titulo">La tecnología y el futuro</h2>
+
+            <p>
+                La tecnología continuará evolucionando y transformando
+                nuestra forma de aprender, trabajar y comunicarnos.
+                Por eso, es importante adquirir conocimientos
+                tecnológicos y utilizarlos de manera responsable
+                para construir un futuro con mayores oportunidades.
+            </p>
+
+            <a href="#contacto" class="boton">
+                Contáctanos
+            </a>
+
+        </section>
+
+    </main>
+
+    <!-- PIE DE PAGINA -->
+    <footer id="contacto">
+
+        <h2>TecnoWorld.</h2>
+
+        <p>Conoce, aprende y descubre el mundo tecnológico.</p>
+
+        <p><strong>Desarrollado por:</strong> Carlos emmanuel perez rojas</p>
+
+        <p><strong>Correo:</strong>Carlorojas55421@gmail.com</p>
+
+        <p><strong>Teléfono:</strong> +503 0000-0000</p>
+
+        <div class="redes">
+            <a href="https://www.facebook.com/">Facebook</a>
+            <a href="https://www.instagram.com/">Instagram</a>
+            <a href="https://www.linkedin.com/">LinkedIn</a>
+        </div>
+
+        <p class="copyright">
+            © 2026 TecnoWorld. Todos los derechos reservados.
+        </p>
+
+    </footer>
+
+</body>
+</html>
